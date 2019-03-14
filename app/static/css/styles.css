@@ -1,0 +1,18 @@
+.navbar{
+    background-color: #990000 !important;
+}
+.navbar .navbar-brand {
+    color: #EDEBEB !important;
+}
+.navbar .navbar-nav li a{
+    color: #EDEBEB !important;
+}
+.navbar-toggler {
+    background-color: #EDEBEB !important;
+}
+body {
+    padding-top: 70px;
+    padding-bottom: 20px;
+}
+
+

@@ -20,7 +20,7 @@ git clone https://github.com/benfwalla/Scrape-My-Professor.git
 ```
 After the download is complete, move to the root folder of the repository.
 In order to run the app, you must activate the virtual environment. The 
-virtual environment is where all the external libraries of the flask,
+virtual environment is where all the external libraries of flask,
 pandas, Python 3, and many others are kept to make this application run.
 To activate it, type in the following:
 

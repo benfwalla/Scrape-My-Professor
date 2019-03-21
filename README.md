@@ -28,7 +28,7 @@ For Windows users: `venv\Scripts\activate`
 
 For Mac users: `source venv/Scripts/activate`
 
-I'm actually not users if this will work on a Mac. Stay tuned for that.
+I'm actually not sure if this will work on a Mac. Stay tuned for that.
 
 Now, you can run the app. In your terminal, enter: `flask run`
 

@@ -28,7 +28,11 @@ For Windows users: `venv\Scripts\activate`
 
 For Mac users: `source venv/Scripts/activate`
 
-I'm actually not sure if this will work on a Mac. Stay tuned for that.
+Then, install the following modules with pip:
+
+`pip install flask`
+
+`pip install flask_wtf`
 
 Now, you can run the app. In your terminal, enter: `flask run`
 

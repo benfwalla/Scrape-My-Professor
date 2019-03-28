@@ -1,40 +1,58 @@
-"""
-Created on Thu Feb 21 12:22:18 2019
-@author: michaelgaj
-"""
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 import urllib.request
 from bs4 import BeautifulSoup
 
-teacher = input("Enter Teacher Name: ")
-space = teacher.split(" ")
-school = input("Enter School Name: ")
-ss = school.split(" ")
-webpage = "https://www.ratemyprofessors.com/search.jsp?query=" + space[0] + "+" + space[1] + "+" + ss[0] + "+" + ss[1]
-page = urllib.request.urlopen(webpage)
-soup = BeautifulSoup(page, 'html.parser')
-links = []
-for link in soup.find_all('a'):
-    links.append(str(link.get('href')))
-# '/ShowRatings.jsp?tid=149625'
+# IN: Teacher Name
+# Out: Dictionary Overall Grade, Retake, Level of Difficulty, Found
+def find_teachergrade(name):
+   # teacher = input("Enter Teacher Name: ")
+
+    space = name.split(" ")
+
+    school = "Indiana University"
+    ss= school.split(" ")
+
+    webpage = "https://www.ratemyprofessors.com/search.jsp?query=" + space[0] + "+" +space[1] + "+" + ss[0] + "+" + ss[1]
+
+    page = urllib.request.urlopen(webpage)
+    soup = BeautifulSoup(page, 'html.parser')
 
 
-for link in links:
-    if (link.startswith('/ShowRatings')):
-        fr = link
+    dict = {'Overall': 0,'Retake': 0, 'Lod': 0, 'Found': 0}
+    links=[]
+    for link in soup.find_all('a'):
+        links.append(str(link.get('href')))
 
-fw = "https://www.ratemyprofessors.com/" + fr
-fb = urllib.request.urlopen(fw)
-stew = BeautifulSoup(fb, 'html.parser')
-grade = stew.findAll("div", {"class": "grade"})
-overall = grade[0].text.strip()
-retake = grade[1].text.strip()
-lod = grade[2].text.strip()
-scale = "out of 5"
-print()
-print()
-print("{0:22} {1}".format("Professor Name:", teacher))
-print("{0:22} {1}".format("School Name:", school))
-print()
-print("{0:22} {1} {2}".format("Overall Grade:", overall, scale))
-print("{0:22} {1} {2}".format("Retake Grade:", retake, scale))
-print("{0:22} {1} {2}".format("Level of Difficulty:", lod, scale))
+    #'/ShowRatings.jsp?tid=149625'
+
+    for link in links:
+        if(link.startswith('/ShowRatings')):
+            fr = link
+    try:
+        fw = "https://www.ratemyprofessors.com/" + fr
+    except:
+        dict['Overall'] = "N/A"
+        dict['Retake'] = "N/A"
+        dict['Lod'] = "N/A"
+        dict['Found'] = "0"
+        return dict
+
+    fb = urllib.request.urlopen(fw)
+
+    stew= BeautifulSoup(fb, 'html.parser')
+
+    grade = stew.findAll("div", {"class": "grade"})
+    dict['Overall'] = grade[0].text.strip()
+    dict['Retake']= grade[1].text.strip()
+    dict['Lod']= grade[2].text.strip()
+    dict['Found'] = "1"
+    return dict
+
+def main():
+    name = input("Enter Teacher Name: ")
+    output = find_teachergrade(name)
+    print(output)
+
+if __name__== "__main__":
+    main()

@@ -84,7 +84,7 @@ def table_data(urls):
 #     clsnb = ""
 # website = link(department,courseSub,catNum,clsnb)
 #
-# result = tableData(website)
+# result = table_data(website)
 # size = len(result)
 # print(result.head(size))
 # print()

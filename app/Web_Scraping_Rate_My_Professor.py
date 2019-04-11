@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 import urllib.request
 from bs4 import BeautifulSoup
 
@@ -18,9 +16,10 @@ def find_teachergrade(name):
     page = urllib.request.urlopen(webpage)
     soup = BeautifulSoup(page, 'html.parser')
 
+    teacher_dict = {}
+    teacher_dict['Name'] = name
 
-    dict = {'Overall': 0,'Retake': 0, 'Lod': 0, 'Found': 0}
-    links=[]
+    links = []
     for link in soup.find_all('a'):
         links.append(str(link.get('href')))
 
@@ -32,22 +31,25 @@ def find_teachergrade(name):
     try:
         fw = "https://www.ratemyprofessors.com/" + fr
     except:
-        dict['Overall'] = "N/A"
-        dict['Retake'] = "N/A"
-        dict['Lod'] = "N/A"
-        dict['Found'] = "0"
-        return dict
+        teacher_dict['Found'] = False
+        teacher_dict['Overall'] = "N/A"
+        teacher_dict['Retake'] = "N/A"
+        teacher_dict['Level of Difficulty'] = "N/A"
+        return teacher_dict
 
     fb = urllib.request.urlopen(fw)
 
-    stew= BeautifulSoup(fb, 'html.parser')
+    stew = BeautifulSoup(fb, 'html.parser')
 
     grade = stew.findAll("div", {"class": "grade"})
-    dict['Overall'] = grade[0].text.strip()
-    dict['Retake']= grade[1].text.strip()
-    dict['Lod']= grade[2].text.strip()
-    dict['Found'] = "1"
-    return dict
+
+    teacher_dict['Link'] = fw
+    teacher_dict['Found'] = True
+    teacher_dict['Overall'] = grade[0].text.strip()
+    teacher_dict['Retake'] = grade[1].text.strip()
+    teacher_dict['Level of Difficulty'] = grade[2].text.strip()
+
+    return teacher_dict
 
 def main():
     name = input("Enter Teacher Name: ")

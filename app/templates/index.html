@@ -1,178 +1,171 @@
 {% extends "base.html" %}
+{% set active_page = "Home" %}
 
 {% block content %}
 
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="card-title font-weight-bold">Enter Course Information</div>
-                        <form action="/" method="post" role="form">
-                            {{ form.csrf }}
-                            <div class="form-group">
-                                <label class="my-1 mr-2" for="DepartmentInput">Department</label>
-                                <select class="custom-select my-1 mr-sm-2" name="DepartmentInput">
-                                    <option></option>
-                                    <option value="AAAD">AAAD</option>
-                                    <option value="AADM">AADM</option>
-                                    <option value="AAST">AAST</option>
-                                    <option value="ABEH">ABEH</option>
-                                    <option value="ACE">ACE</option>
-                                    <option value="AERO">AERO</option>
-                                    <option value="AFRI">AFRI</option>
-                                    <option value="AFRO">AFRO</option>
-                                    <option value="AMID">AMID</option>
-                                    <option value="AMST">AMST</option>
-                                    <option value="ANAT">ANAT</option>
-                                    <option value="ANTH">ANTH</option>
-                                    <option value="ARTH">ARTH</option>
-                                    <option value="ASCS">ASCS</option>
-                                    <option value="AST">AST</option>
-                                    <option value="BIOC">BIOC</option>
-                                    <option value="BIOL">BIOL</option>
-                                    <option value="BIOT">BIOT</option>
-                                    <option value="BUEX">BUEX</option>
-                                    <option value="BUKD">BUKD</option>
-                                    <option value="BUS">BUS</option>
-                                    <option value="CEUS">CEUS</option>
-                                    <option value="CHEM">CHEM</option>
-                                    <option value="CJUS">CJUS</option>
-                                    <option value="CLAR">CLAR</option>
-                                    <option value="CLAS">CLAS</option>
-                                    <option value="CLLC">CLLC</option>
-                                    <option value="CMCL">CMCL</option>
-                                    <option value="CMLT">CMLT</option>
-                                    <option value="COAS">COAS</option>
-                                    <option value="COGS">COGS</option>
-                                    <option value="COLL">COLL</option>
-                                    <option value="CSCI">CSCI</option>
-                                    <option value="CTIH">CTIH</option>
-                                    <option value="CULS">CULS</option>
-                                    <option value="DSCI">DSCI</option>
-                                    <option value="EALC">EALC</option>
-                                    <option value="EAS">EAS</option>
-                                    <option value="ECON">ECON</option>
-                                    <option value="EDUC">EDUC</option>
-                                    <option value="ENG">ENG</option>
-                                    <option value="ENGR">ENGR</option>
-                                    <option value="EURO">EURO</option>
-                                    <option value="FILM">FILM</option>
-                                    <option value="FINA">FINA</option>
-                                    <option value="FLLC">FLLC</option>
-                                    <option value="FOLK">FOLK</option>
-                                    <option value="FRIT">FRIT</option>
-                                    <option value="FRST">FRST</option>
-                                    <option value="GEOG">GEOG</option>
-                                    <option value="GEOL">GEOL</option>
-                                    <option value="GER">GER</option>
-                                    <option value="GLLC">GLLC</option>
-                                    <option value="GNDR">GNDR</option>
-                                    <option value="GRAD">GRAD</option>
-                                    <option value="HISP">HISP</option>
-                                    <option value="HIST">HIST</option>
-                                    <option value="HON">HON</option>
-                                    <option value="HPER">HPER</option>
-                                    <option value="HPSC">HPSC</option>
-                                    <option value="HUBI">HUBI</option>
-                                    <option value="HVST">HVST</option>
-                                    <option value="IBLS">IBLS</option>
-                                    <option value="ILS">ILS</option>
-                                    <option value="IMP">IMP</option>
-                                    <option value="INFO">INFO</option>
-                                    <option value="INST">INST</option>
-                                    <option value="INTL">INTL</option>
-                                    <option value="JOUR">JOUR</option>
-                                    <option value="JSTU">JSTU</option>
-                                    <option value="KINS">KINS</option>
-                                    <option value="LAMP">LAMP</option>
-                                    <option value="LATS">LATS</option>
-                                    <option value="LAW">LAW</option>
-                                    <option value="LESA">LESA</option>
-                                    <option value="LING">LING</option>
-                                    <option value="LLC">LLC</option>
-                                    <option value="LSTU">LSTU</option>
-                                    <option value="LTAM">LTAM</option>
-                                    <option value="MATH">MATH</option>
-                                    <option value="MBIO">MBIO</option>
-                                    <option value="MCHE">MCHE</option>
-                                    <option value="MED">MED</option>
-                                    <option value="MEST">MEST</option>
-                                    <option value="MIL">MIL</option>
-                                    <option value="MLS">MLS</option>
-                                    <option value="MSCH">MSCH</option>
-                                    <option value="MSCI">MSCI</option>
-                                    <option value="MUS">MUS</option>
-                                    <option value="NELC">NELC</option>
-                                    <option value="NEUS">NEUS</option>
-                                    <option value="NURS">NURS</option>
-                                    <option value="OPT">OPT</option>
-                                    <option value="OVST">OVST</option>
-                                    <option value="PACE">PACE</option>
-                                    <option value="PATH">PATH</option>
-                                    <option value="PHAR">PHAR</option>
-                                    <option value="PHIL">PHIL</option>
-                                    <option value="PHSL">PHSL</option>
-                                    <option value="PHYS">PHYS</option>
-                                    <option value="POLS">POLS</option>
-                                    <option value="POPT">POPT</option>
-                                    <option value="PPP">PPP</option>
-                                    <option value="PRST">PRST</option>
-                                    <option value="PSY">PSY</option>
-                                    <option value="REEI">REEI</option>
-                                    <option value="REL">REL</option>
-                                    <option value="REN">REN</option>
-                                    <option value="SCS">SCS</option>
-                                    <option value="SEAS">SEAS</option>
-                                    <option value="SEMS">SEMS</option>
-                                    <option value="SGIS">SGIS</option>
-                                    <option value="SLAV">SLAV</option>
-                                    <option value="SLIS">SLIS</option>
-                                    <option value="SLST">SLST</option>
-                                    <option value="SOAD">SOAD</option>
-                                    <option value="SOC">SOC</option>
-                                    <option value="SPCH">SPCH</option>
-                                    <option value="SPEA">SPEA</option>
-                                    <option value="SPH">SPH</option>
-                                    <option value="SPHS">SPHS</option>
-                                    <option value="STAT">STAT</option>
-                                    <option value="SWK">SWK</option>
-                                    <option value="TEL">TEL</option>
-                                    <option value="THTR">THTR</option>
-                                    <option value="TOPT">TOPT</option>
-                                    <option value="UDIV">UDIV</option>
-                                    <option value="VICT">VICT</option>
-                                    <option value="VSCI">VSCI</option>
-                                    <option value="WEUR">WEUR</option>
-                                    <option value="WOST">WOST</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="CourseSubjectInput">Course Subject</label>
-                                <input type="text" class="form-control" name="CourseSubjectInput" placeholder="Course Subject" value={{ course_subject }}>
-                            </div>
-                            <div class="form-group">
-                                <label for="CatalogNumberInput">Catalog Number</label>
-                                <input type="text" class="form-control" name="CatalogNumberInput" placeholder="Catalog Number" value="">
-                            </div>
-                            <div class="form-group">
-                                <label for="ClassNumberInput">Class Number</label>
-                                <input type="text" class="form-control" name="ClassNumberInput" placeholder="Class Number" value="">
-                            </div>
-                            <div class="form-group">
-                                <label for="InstructorInput">Instructor</label>
-                                <input type="text" class="form-control" name="InstructorInput" placeholder="Instructor" value="">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Search</button>
-                            <button type="reset" class="btn btn-outline-primary">Clear</button>
-                        </form>
-                    </div>
+    <div class="row">
+        <div class="col-md-4 mt-3 mb-3">
+            <div class="card" style="overflow-y:hidden; max-height:85%;">
+                <div class="card-body">
+                    <div class="card-title font-weight-bold">Enter Course Information</div>
+                    <form action="/" method="post" role="form">
+                        {{ form.csrf }}
+                        <div class="form-group">
+                            <label class="my-1 mr-2" for="DepartmentInput">Department</label>
+                            <select class="form-control form-control-sm" name="DepartmentInput">
+                                <option></option>
+                                <option value="AAAD">AAAD</option>
+                                <option value="AADM">AADM</option>
+                                <option value="AAST">AAST</option>
+                                <option value="ABEH">ABEH</option>
+                                <option value="ACE">ACE</option>
+                                <option value="AERO">AERO</option>
+                                <option value="AFRI">AFRI</option>
+                                <option value="AFRO">AFRO</option>
+                                <option value="AMID">AMID</option>
+                                <option value="AMST">AMST</option>
+                                <option value="ANAT">ANAT</option>
+                                <option value="ANTH">ANTH</option>
+                                <option value="ARTH">ARTH</option>
+                                <option value="ASCS">ASCS</option>
+                                <option value="AST">AST</option>
+                                <option value="BIOC">BIOC</option>
+                                <option value="BIOL">BIOL</option>
+                                <option value="BIOT">BIOT</option>
+                                <option value="BUEX">BUEX</option>
+                                <option value="BUKD">BUKD</option>
+                                <option value="BUS">BUS</option>
+                                <option value="CEUS">CEUS</option>
+                                <option value="CHEM">CHEM</option>
+                                <option value="CJUS">CJUS</option>
+                                <option value="CLAR">CLAR</option>
+                                <option value="CLAS">CLAS</option>
+                                <option value="CLLC">CLLC</option>
+                                <option value="CMCL">CMCL</option>
+                                <option value="CMLT">CMLT</option>
+                                <option value="COAS">COAS</option>
+                                <option value="COGS">COGS</option>
+                                <option value="COLL">COLL</option>
+                                <option value="CSCI">CSCI</option>
+                                <option value="CTIH">CTIH</option>
+                                <option value="CULS">CULS</option>
+                                <option value="DSCI">DSCI</option>
+                                <option value="EALC">EALC</option>
+                                <option value="EAS">EAS</option>
+                                <option value="ECON">ECON</option>
+                                <option value="EDUC">EDUC</option>
+                                <option value="ENG">ENG</option>
+                                <option value="ENGR">ENGR</option>
+                                <option value="EURO">EURO</option>
+                                <option value="FILM">FILM</option>
+                                <option value="FINA">FINA</option>
+                                <option value="FLLC">FLLC</option>
+                                <option value="FOLK">FOLK</option>
+                                <option value="FRIT">FRIT</option>
+                                <option value="FRST">FRST</option>
+                                <option value="GEOG">GEOG</option>
+                                <option value="GEOL">GEOL</option>
+                                <option value="GER">GER</option>
+                                <option value="GLLC">GLLC</option>
+                                <option value="GNDR">GNDR</option>
+                                <option value="GRAD">GRAD</option>
+                                <option value="HISP">HISP</option>
+                                <option value="HIST">HIST</option>
+                                <option value="HON">HON</option>
+                                <option value="HPER">HPER</option>
+                                <option value="HPSC">HPSC</option>
+                                <option value="HUBI">HUBI</option>
+                                <option value="HVST">HVST</option>
+                                <option value="IBLS">IBLS</option>
+                                <option value="ILS">ILS</option>
+                                <option value="IMP">IMP</option>
+                                <option value="INFO">INFO</option>
+                                <option value="INST">INST</option>
+                                <option value="INTL">INTL</option>
+                                <option value="JOUR">JOUR</option>
+                                <option value="JSTU">JSTU</option>
+                                <option value="KINS">KINS</option>
+                                <option value="LAMP">LAMP</option>
+                                <option value="LATS">LATS</option>
+                                <option value="LAW">LAW</option>
+                                <option value="LESA">LESA</option>
+                                <option value="LING">LING</option>
+                                <option value="LLC">LLC</option>
+                                <option value="LSTU">LSTU</option>
+                                <option value="LTAM">LTAM</option>
+                                <option value="MATH">MATH</option>
+                                <option value="MBIO">MBIO</option>
+                                <option value="MCHE">MCHE</option>
+                                <option value="MED">MED</option>
+                                <option value="MEST">MEST</option>
+                                <option value="MIL">MIL</option>
+                                <option value="MLS">MLS</option>
+                                <option value="MSCH">MSCH</option>
+                                <option value="MSCI">MSCI</option>
+                                <option value="MUS">MUS</option>
+                                <option value="NELC">NELC</option>
+                                <option value="NEUS">NEUS</option>
+                                <option value="NURS">NURS</option>
+                                <option value="OPT">OPT</option>
+                                <option value="OVST">OVST</option>
+                                <option value="PACE">PACE</option>
+                                <option value="PATH">PATH</option>
+                                <option value="PHAR">PHAR</option>
+                                <option value="PHIL">PHIL</option>
+                                <option value="PHSL">PHSL</option>
+                                <option value="PHYS">PHYS</option>
+                                <option value="POLS">POLS</option>
+                                <option value="POPT">POPT</option>
+                                <option value="PPP">PPP</option>
+                                <option value="PRST">PRST</option>
+                                <option value="PSY">PSY</option>
+                                <option value="REEI">REEI</option>
+                                <option value="REL">REL</option>
+                                <option value="REN">REN</option>
+                                <option value="SCS">SCS</option>
+                                <option value="SEAS">SEAS</option>
+                                <option value="SEMS">SEMS</option>
+                                <option value="SGIS">SGIS</option>
+                                <option value="SLAV">SLAV</option>
+                                <option value="SLIS">SLIS</option>
+                                <option value="SLST">SLST</option>
+                                <option value="SOAD">SOAD</option>
+                                <option value="SOC">SOC</option>
+                                <option value="SPCH">SPCH</option>
+                                <option value="SPEA">SPEA</option>
+                                <option value="SPH">SPH</option>
+                                <option value="SPHS">SPHS</option>
+                                <option value="STAT">STAT</option>
+                                <option value="SWK">SWK</option>
+                                <option value="TEL">TEL</option>
+                                <option value="THTR">THTR</option>
+                                <option value="TOPT">TOPT</option>
+                                <option value="UDIV">UDIV</option>
+                                <option value="VICT">VICT</option>
+                                <option value="VSCI">VSCI</option>
+                                <option value="WEUR">WEUR</option>
+                                <option value="WOST">WOST</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="CourseSubjectInput">Course Subject</label>
+                            <input type="text" class="form-control form-control-sm" name="CourseSubjectInput" placeholder="Course Subject" value={{ course_subject }}>
+                        </div>
+                        <div class="form-group">
+                            <label for="CatalogNumberInput">Catalog Number</label>
+                            <input type="text" class="form-control form-control-sm" name="CatalogNumberInput" placeholder="Catalog Number" value="">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm">Search</button>
+                        <button type="reset" class="btn btn-outline-primary btn-sm">Clear</button>
+                    </form>
                 </div>
             </div>
+        </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 mb-4">
-                <div class="card">
-                    <div class="card-body"></div>
+        <div class="col-md-8 mt-3 mb-3">
+            <div class="card">
+                <div class="card-body">
                     {% with messages = get_flashed_messages() %}
                         {% if messages %}
                             <ul>
@@ -203,6 +196,41 @@
                     </script>
                 </div>
             </div>
+
+            <br>
+
+            <div class="card">
+                <h3 class="card-title">Rate My Professor Results</h3>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Instructor</th>
+                        <th scope="col">Overall</th>
+                        <th scope="col">Would Take Again</th>
+                        <th scope="col">Level of Difficulty</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for teacher in teachers %}
+                        <tr>
+                        {% if teacher['Found'] %}
+                            <td><a href="{{ teacher['Link'] }}" target="_blank">{{ teacher['Name'] }}</a></td>
+                            <td>{{ teacher['Overall'] }}</td>
+                            <td>{{ teacher['Retake'] }}</td>
+                            <td>{{ teacher['Level of Difficulty'] }}</td>
+                        {% else %}
+                            <td>{{ teacher['Name'] }}</td>
+                            <td>Not found</td>
+                            <td></td>
+                            <td></td>
+                        {% endif %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+
         </div>
     </div>
 {% endblock %}

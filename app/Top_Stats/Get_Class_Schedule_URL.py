@@ -50,16 +50,16 @@ def get_term_url(date):
             return "https://registrar.indiana.edu/browser/soc" + fullcode + "/index.shtml"
 
 
-# can take in either the current date or an older date
-current_date = datetime.datetime.now()
-old_date = datetime.datetime(2012, 4, 7)
-
-url = get_term_url(datetime.datetime.now())
-print(url)
-
-try:
-    web_page = urllib.request.urlopen(url)
-    contents = web_page.read().decode(errors="replace")
-    web_page.close()
-except:
-    print("URL Error")
+# # can take in either the current date or an older date
+# current_date = datetime.datetime.now()
+# old_date = datetime.datetime(2012, 4, 7)
+#
+# url = get_term_url(datetime.datetime.now())
+# print(url)
+#
+# try:
+#     web_page = urllib.request.urlopen(url)
+#     contents = web_page.read().decode(errors="replace")
+#     web_page.close()
+# except:
+#     print("URL Error")

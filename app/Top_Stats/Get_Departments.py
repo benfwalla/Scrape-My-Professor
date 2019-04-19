@@ -1,6 +1,7 @@
 from urllib.request import urlopen as ureq
 from bs4 import BeautifulSoup as soup
 
+
 def department(url):
     my_url = url
     uClient = ureq(my_url)
@@ -63,7 +64,13 @@ def department_classes(url):
     return a
 
 
-def value(url):
+def get_all_courses(url):
+    '''
+    Returns all the course names for each department in a particular registrar link
+    :param url: A String of a registrar link
+    :return: A Dictionary of department codes to a list of corresponding courses
+    (Ex: 'BUS': ['BUS-A 100', 'BUS-A 201', ...]
+    '''
     final = {}
 
     for key, value in department_depth(url, department(url)).items():

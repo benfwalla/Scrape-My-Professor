@@ -14,7 +14,7 @@ def index():
 
     if request.method == 'POST':
         department = request.form['DepartmentInput']
-        course_subject = request.form['CourseSubjectInput']
+        course_subject = str(request.form['CourseSubjectInput']).upper()
         catalog_number = request.form['CatalogNumberInput']
 
         gd_urls = link(department, course_subject, catalog_number, '')

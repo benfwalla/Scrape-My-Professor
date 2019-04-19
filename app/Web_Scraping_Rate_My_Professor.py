@@ -42,12 +42,18 @@ def find_teachergrade(name):
     stew = BeautifulSoup(fb, 'html.parser')
 
     grade = stew.findAll("div", {"class": "grade"})
-
     teacher_dict['Link'] = fw
     teacher_dict['Found'] = True
-    teacher_dict['Overall'] = grade[0].text.strip()
-    teacher_dict['Retake'] = grade[1].text.strip()
-    teacher_dict['Level of Difficulty'] = grade[2].text.strip()
+    try:
+        teacher_dict['Overall'] = grade[0].text.strip()
+        teacher_dict['Retake'] = grade[1].text.strip()
+        teacher_dict['Level of Difficulty'] = grade[2].text.strip()
+    except:
+        teacher_dict['Found'] = False
+        teacher_dict['Overall'] = "N/A"
+        teacher_dict['Retake'] = "N/A"
+        teacher_dict['Level of Difficulty'] = "N/A"
+        return teacher_dict
 
     return teacher_dict
 

@@ -1,32 +1,38 @@
 import urllib.request
 from bs4 import BeautifulSoup
 
-# IN: Teacher Name
-# Out: Dictionary Overall Grade, Retake, Level of Difficulty, Found
+
 def find_teachergrade(name):
-   # teacher = input("Enter Teacher Name: ")
+    '''
+    Scrapes the information of a given IU professor on ratemyprofessor.com
+    :param name: A String of an IU Professor
+    :return: A Dictionary of information about the professor
+    '''
 
     space = name.split(" ")
 
     school = "Indiana University"
-    ss= school.split(" ")
+    ss = school.split(" ")
 
-    webpage = "https://www.ratemyprofessors.com/search.jsp?query=" + space[0] + "+" +space[1] + "+" + ss[0] + "+" + ss[1]
+    webpage = "https://www.ratemyprofessors.com/search.jsp?query=" + \
+              space[0] + "+" + \
+              space[1] + "+" + \
+              ss[0] + "+" + \
+              ss[1]
 
     page = urllib.request.urlopen(webpage)
     soup = BeautifulSoup(page, 'html.parser')
 
-    teacher_dict = {}
-    teacher_dict['Name'] = name
+    teacher_dict = {'Name': name}
 
     links = []
     for link in soup.find_all('a'):
         links.append(str(link.get('href')))
 
-    #'/ShowRatings.jsp?tid=149625'
+    # '/ShowRatings.jsp?tid=149625'
 
     for link in links:
-        if(link.startswith('/ShowRatings')):
+        if link.startswith('/ShowRatings'):
             fr = link
     try:
         fw = "https://www.ratemyprofessors.com/" + fr
@@ -56,11 +62,3 @@ def find_teachergrade(name):
         return teacher_dict
 
     return teacher_dict
-
-def main():
-    name = input("Enter Teacher Name: ")
-    output = find_teachergrade(name)
-    print(output)
-
-if __name__== "__main__":
-    main()

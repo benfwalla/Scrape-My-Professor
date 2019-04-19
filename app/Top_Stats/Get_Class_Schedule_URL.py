@@ -1,9 +1,12 @@
-import urllib.request
 import datetime
 
-# returns the url of the term closest to the input date
-# input date should be in the format of month, year
+
 def get_term_url(date):
+    '''
+    Returns the url of the term closest to the input data
+    :param date: A datetime object (usually datetime.today())
+    :return: The Registrar url that points to the most recent completed semester relative to the date
+    '''
     year = date.year
     month = date.strftime("%m")
     if datetime.datetime.now().year == year:
@@ -11,43 +14,43 @@ def get_term_url(date):
     else:
         sameyear = False
 
-    if int(month) >= 3 and int(month) <= 8:
+    if 3 <= int(month) <= 8:
         fall = True
     else:
         fall = False
 
-    yeardiff = year - 2004
+    year_diff = year - 2004
 
     if fall:
-        code = yeardiff+4
+        code = year_diff+4
         if code < 10:
-            fullcode = "40" + str(code)+"8"
+            full_code = "40" + str(code)+"8"
         else:
-            fullcode="4" + str(code)+"8"
+            full_code="4" + str(code)+"8"
 
         if not sameyear and year > 2012:
-            return "http://wwwreg.indiana.edu/ScheduleOfClasses/prl/soc"+fullcode+"/index.shtml"
+            return "http://wwwreg.indiana.edu/ScheduleOfClasses/prl/soc"+full_code+"/index.shtml"
         elif year < 2012:
-            return "http://wwwreg.indiana.edu/ScheduleOfClasses/prl/soc"+fullcode+"/index.html"
+            return "http://wwwreg.indiana.edu/ScheduleOfClasses/prl/soc"+full_code+"/index.html"
         elif year == 2012:
-            return "http://wwwreg.indiana.edu/ScheduleOfClasses/prl/soc" + fullcode + "/index.php"
+            return "http://wwwreg.indiana.edu/ScheduleOfClasses/prl/soc" + full_code + "/index.php"
         else:
-            return "https://registrar.indiana.edu/browser/soc"+fullcode+"/index.shtml"
+            return "https://registrar.indiana.edu/browser/soc"+full_code+"/index.shtml"
     else:
-        code = yeardiff+4
+        code = year_diff+4
         if code < 10:
-            fullcode = "40" + str(code) + "2"
+            full_code = "40" + str(code) + "2"
         else:
-            fullcode = "4" + str(code) + "2"
+            full_code = "4" + str(code) + "2"
 
         if not sameyear and year > 2013:
-            return "http://wwwreg.indiana.edu/ScheduleOfClasses/prl/soc" + fullcode + "/index.shtml"
+            return "http://wwwreg.indiana.edu/ScheduleOfClasses/prl/soc" + full_code + "/index.shtml"
         elif year < 2013:
-            return "http://wwwreg.indiana.edu/ScheduleOfClasses/prl/soc" + fullcode + "/index.html"
+            return "http://wwwreg.indiana.edu/ScheduleOfClasses/prl/soc" + full_code + "/index.html"
         elif year == 2013:
-            return "http://wwwreg.indiana.edu/ScheduleOfClasses/prl/soc" + fullcode + "/index.php"
+            return "http://wwwreg.indiana.edu/ScheduleOfClasses/prl/soc" + full_code + "/index.php"
         else:
-            return "https://registrar.indiana.edu/browser/soc" + fullcode + "/index.shtml"
+            return "https://registrar.indiana.edu/browser/soc" + full_code + "/index.shtml"
 
 
 # # can take in either the current date or an older date

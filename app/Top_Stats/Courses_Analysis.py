@@ -1,4 +1,3 @@
-import re
 from app.Top_Stats.Get_Class_Schedule_URL import get_term_url
 from app.Top_Stats.Get_Departments import value
 

@@ -1,7 +1,7 @@
 from flask import render_template, request, flash
 from app import app
 from app.forms import CourseForm
-from app.Web_Scraping_Grade_Distribution import link, make_class_name, table_data
+from app.Web_Scraping_Grade_Distribution import link, make_course_name, table_data
 from app.Web_Scraping_Rate_My_Professor import find_teachergrade
 
 
@@ -18,7 +18,7 @@ def index():
         catalog_number = request.form['CatalogNumberInput']
 
         gd_urls = link(department, course_subject, catalog_number, '')
-        class_name = make_class_name(department, course_subject, catalog_number)
+        class_name = make_course_name(department, course_subject, catalog_number)
         gd_dataframe = table_data(gd_urls, class_name)
 
         avg_gpa = round(gd_dataframe['CLS GPA'].mean(), 2)
@@ -46,4 +46,3 @@ def index():
 
     return render_template('index.html', form=form, grades=grades)
 
-# TODO: Learn how to integrate AJAX into the form! https://www.youtube.com/watch?v=IZWtHsM3Y5A

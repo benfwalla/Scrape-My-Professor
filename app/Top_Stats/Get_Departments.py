@@ -1,7 +1,6 @@
 from urllib.request import urlopen as ureq
 from bs4 import BeautifulSoup as soup
 
-
 def department(url):
     my_url = url
     uClient = ureq(my_url)

@@ -8,6 +8,15 @@ pd.set_option('display.width', 1000)
 
 
 def link(department, courseSub, catNum, clsnb):
+    '''
+    Creates the search query url to look up a class on the IU Grade Distribution site
+    (http://gradedistribution.registrar.indiana.edu)
+    :param department: A String of a course department (Ex: 'BUS')
+    :param courseSub: A String of a course subject (Ex: 'K')
+    :param catNum: A String of a course catalog number (Ex: '201')
+    :param clsnb: A String of a specific class number (Ex: '10488')
+    :return: A String of a url
+    '''
     urls = []
     url = ("http://gradedistribution.registrar.indiana.edu/index.php?dept=" + department.upper() +
            "&subject=" + courseSub.upper() +
@@ -25,11 +34,24 @@ def link(department, courseSub, catNum, clsnb):
     return urls
 
 
-def make_class_name(department, course_subject, catalog_number):
+def make_course_name(department, course_subject, catalog_number):
+    '''
+    Formats course name attributes into the proper format
+    :param department: A String of a course department (Ex: 'BUS')
+    :param course_subject: A String of a course subject (Ex: 'K')
+    :param catalog_number: A String of a course catalog number (Ex: '201')
+    :return: A String of a course name (Ex: 'BUS-K 201')
+    '''
     return "{}-{} {}".format(department, course_subject, catalog_number)
 
 
-def table_data(urls, className):
+def table_data(urls, class_name):
+    '''
+    Scrapes the results of a list of search query urls for IU's Grade Distribution Website into a pandas DataFrame
+    :param urls: A List of search query urls
+    :param class_name: A String of a course name
+    :return: A pandas DataFrame of cleaned Grade Distribution results
+    '''
     allData = []
     for url in urls:
         try:
@@ -51,7 +73,7 @@ def table_data(urls, className):
                     allData.append(tempList)
                     tempList = []
                 elif len(tempList) == 6:
-                    if tempList[3] != className:
+                    if tempList[3] != class_name:
                         tempList = []
                     else:
                         content = str(data)

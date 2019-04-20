@@ -17,7 +17,7 @@ def index():
         course_subject = str(request.form['CourseSubjectInput']).upper()
         catalog_number = request.form['CatalogNumberInput']
 
-        gd_urls = link(department, course_subject, catalog_number, '')
+        gd_urls = link(department, course_subject, catalog_number)
         class_name = make_course_name(department, course_subject, catalog_number)
         gd_dataframe = table_data(gd_urls, class_name)
 

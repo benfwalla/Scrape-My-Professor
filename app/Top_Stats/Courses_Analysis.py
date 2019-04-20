@@ -2,7 +2,6 @@ from app.Top_Stats.Get_Class_Schedule_URL import get_term_url
 from app.Top_Stats.Get_Departments import get_all_courses
 from app.Web_Scraping_Grade_Distribution import link, table_data
 from datetime import datetime
-import time
 import pandas as pd
 from tqdm import tqdm
 
@@ -22,8 +21,8 @@ def output_top_stats():
 
     for department in courses_dict:
         for course in tqdm(courses_dict[department], desc=department):
-            if course != "[CROSSLISTED COURSES]":
-                course_split = course.replace("-", " ").split()
+            course_split = course.replace("-", " ").split()
+            if course != "[CROSSLISTED COURSES]" and len(course_split) == 3:
                 department = course_split[0]
                 course_subject = course_split[1]
                 catalog_number = course_split[2]
@@ -39,7 +38,9 @@ def output_top_stats():
                                                                  'B%': b_average}, index=[0]),
                                                    ignore_index=True)
 
+    top_stats_df.to_csv('output.csv')
+
     return top_stats_df
 
 
-print(output_top_stats())
+output_top_stats()

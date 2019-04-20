@@ -14,7 +14,6 @@ def link(department, course_subject, catalog_number):
     :param department: A String of a course department (Ex: 'BUS')
     :param course_subject: A String of a course subject (Ex: 'K')
     :param catalog_number: A String of a course catalog number (Ex: '201')
-    :param clsnb: A String of a specific class number (Ex: '10488')
     :return: A String of a url
     '''
     urls = []
